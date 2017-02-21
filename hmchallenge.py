@@ -4,7 +4,18 @@
 # right now these are all global but will be made into Class objects
 
 # word - for now manually chosen, needs to be hooked up to http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
-word = "bubbles"
+
+import requests
+
+import json
+
+import random
+
+r = requests.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words')
+r.status_code
+words = r.content.splitlines()
+word = random.choice(words)
+
 
 # the number of characters in the chosen word, may be multiples of the letters but still same number of chars
 word_length = len(word)
@@ -69,6 +80,7 @@ while guesses < max_guesses:
 
 	if 	guesses == max_guesses:
 		print "sorry, you've run out of guesses!"
+		print word
 
 		
 

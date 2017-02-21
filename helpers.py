@@ -27,15 +27,16 @@ import hmchallenge
 
 def partial_word(word, guess_letter):
 	"""function to show current letters guessed throughout the game"""
-
+	# partial_word = "_ " * len(word)
 	for letter in range(len(word)):
-
-		if guess_letter == letter in word:
-			# print guess_letter at that index and "_ " where it isn't
+		
+		if guess_letter != letter in word:
+			print "_ " * len(word)
 
 		else:
 			print "_ " * len(word)
 						# + str + "_"
+						# guess_letter at that index and "_ " where it isn't
 			# or == guess letter at index
 			# print letter at that index with _ around it for unguessed letters
 

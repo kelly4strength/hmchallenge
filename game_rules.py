@@ -53,13 +53,19 @@ import requests
 
 import json
 
-# import random
+import random
 
 r = requests.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words')
 r.status_code
 print type(r)
+words = r.content.splitlines()
+# print words
+word = random.choice(words)
+print word
 # print r.text
 # print r.json
+
+# contents = url.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words')
 
 
 # from urllib2 import Request, urlopen, URLError
