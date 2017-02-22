@@ -1,18 +1,18 @@
 """hangman challenge!!"""
 
-from model import word, guesses, max_guesses, guess_list, partial_word
+from model import word, guesses, max_guesses, guess_list, partial_word, guess_letter
 
-from helpers import show_correct_guesses
+from helpers import show_correct_guess
 
 def guess_word(word):
-	"""function determines a random word and asks user to input guesses"""
+	"""function determines a random word and asks user to guess letters in the word"""
 
 # welcome user to game and give rules, number of letters in word and max number of guesses available
 print """
 	Welcome to something man!
 	I've chosen a super secret word for you, it has %d characters
 	You can guess a letter or the entire word.
-	You get %d guesses to put your legoman together \n""" % (len(word), max_guesses)
+	You get %d guesses to put your man together \n""" % (len(word), max_guesses)
 
 print word
 
@@ -31,13 +31,14 @@ while guesses < max_guesses:
 		# appends guess to guess_list so you can track # of guesses
 		guess_list.append(guess_letter)
 		
+		# REMOVE the try again part if it's the last guess and it's wrong
 		if guess_letter not in word:
 			guesses += 1
 			print "Sorry, %s is not in the word! Try again!\n" %(guess_letter)
 
 		if guess_letter in word:
 			guesses += 1
-			print "Yes, %s is in the word %s \n" % (guess_letter, show_correct_guesses(word, guess_letter, partial_word))
+			print "Yes, %s is in the word %s \n" % (guess_letter, show_correct_guess(word, guess_letter, partial_word))
 
 	# break this out
 	if guess_letter == word:
@@ -49,6 +50,9 @@ while guesses < max_guesses:
 	if 	guesses == max_guesses:
 		print """Sorry, you've run out of guesses! 
 		The word was %s.""" % (word)
+
+	# CURRENT BUG, IF YOU GUESS ALL THE LETTERS INDIVIDUALLY, YOU DON'T WIN!
+	# IF LETTERS IN GUESS LIST = WORD THEN WIN!!!
 
 		
 

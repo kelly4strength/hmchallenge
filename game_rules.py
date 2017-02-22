@@ -36,7 +36,36 @@
 # - Your program must retrieve a dictionary list of words from the word dictionary REST API provided
 # http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
 # - You can use whatever combination of programming languages, tools, frameworks and libraries
+word = "hello"
+guess_list = ['l', 'h']
 
+def show_correct_guesses(word, guess_list):
+	"""function to show current guess letter if it is in the word"""
+
+	partial_word = ""
+	# if partial_word != "": 
+	# 	partial_word = partial_word
+	# 	print partial_word, "!"
+	
+	for i in range(len(word)):
+
+		for item in guess_list:
+
+			if item != word[i]:
+				partial_word =  partial_word + " "
+
+		# elif partial_word already has letters, don't replace them with underscores
+		# possibly use .join
+		# if guess_letter and/or any letters in the guess_list == the word, print partial word
+		
+			else:
+				partial_word = partial_word + word[i]
+
+				print partial_word
+
+	print partial_word
+
+show_correct_guesses(word, guess_list)
 
 
 
