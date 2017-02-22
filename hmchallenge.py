@@ -2,7 +2,7 @@
 
 from model import word, guesses, max_guesses, guess_list, partial_word
 
-from helpers import word_so_far
+from helpers import show_correct_guesses
 
 def guess_word(word):
 	"""function determines a random word and asks user to input guesses"""
@@ -22,6 +22,7 @@ while guesses < max_guesses:
 	# prompting the user that keyboard input is expected/requested
 	guess_letter = raw_input("Guess a letter or word: \n")
 
+	# break this out
 	if guess_letter in guess_list:
 		# You get to guess again and that guess doesn't count against you
 		print "Sorry, you already tried %s. Try again!\n " % (guess_letter)
@@ -36,13 +37,15 @@ while guesses < max_guesses:
 
 		if guess_letter in word:
 			guesses += 1
-			print "Yes, %s is in the word %s \n" % (guess_letter, word_so_far(word, guess_letter, partial_word))
+			print "Yes, %s is in the word %s \n" % (guess_letter, show_correct_guesses(word, guess_letter, partial_word))
 
+	# break this out
 	if guess_letter == word:
 		print "Well done! You've guessed the word %s" % (word) 
 		# ADD would you like to play again?
 		break
 
+	# break this out
 	if 	guesses == max_guesses:
 		print """Sorry, you've run out of guesses! 
 		The word was %s.""" % (word)

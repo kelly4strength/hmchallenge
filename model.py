@@ -80,7 +80,7 @@ guess_list = []
 # raw input
 # guess_letter
 # guess_length (if guess_length > len(word) INVALID)
-# max guesses
+# max_guesses
 # number of unknown letters
 # number of guesses remaining
 # number of correct guesses
