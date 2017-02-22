@@ -1,40 +1,63 @@
 """helper functions"""
 
-from model import word, guess_letter, partial_word
+from model import word, guess_letter, partial_word, max_guesses
 
-def show_correct_guess(word, guess_letter, partial_word):
+def show_correct_guess_letter(word, guess_letter, partial_word):
 	"""function to show current guess letter if it is in the word"""
 
-	# if partial_word != "": 
-	# 	partial_word = partial_word
-	# 	print partial_word, "!"
-	
+########### works for letter combinations but doesn't print them
 	for i in range(len(word)):
 
 		if guess_letter != word[i]:
 			partial_word =  partial_word + "_ "
 
-		# elif partial_word already has letters, don't replace them with underscores
-		# possibly use .join
-		# if guess_letter and/or any letters in the guess_list == the word, print partial word
-		
 		else:
 			partial_word = partial_word + word[i]
 
 	return partial_word
 
-show_correct_guess(word, guess_letter, partial_word)
 
+def limit_guesses(guesses):
+	"""function to limit user to max number of guesses"""  
+	
+	if 	guesses == max_guesses:
+		print """You've run out of guesses! 
+		The word was %s.""" % (word)
+
+
+def entire_word_guessed(guess_letter):
+	"""lets user know when they have guesses the correct word"""
+	if guess_letter == word:
+		# break
+	print "Well done! You've guessed the word %s" % (word)
+
+
+def limit_guess_characters(guess_letter):
+	if guess_letter != upper or lower case letter
+	if guess_letter > len(word)
+	if guess_letter = " "
+
+
+def ask_ user_to_play_again(guess_word):
+	play_again = raw_input("Would you like to play again? y or n? \n")
+	if play_again == "y":
+		start game game_over
+	if play_again == "n":
+		print "Thanks! Bye!"
+	if play_again != "y" or "no":
+		print "please respond with y or n"
+		
+# def game_over(entire_word_guessed):
 
 # def show_correct_guesses(word, guess_list):
 # 	"""function to show current guess letter if it is in the word"""
 
 # 	partial_word = ""
 
-# # if word[i] == item in guess list, append that item to teh partial word string (or .join)
+# if word[i] == item in guess list, append that item to teh partial word string (or .join)
 
-# 	# if partial_word != "": 
-# 	# 	partial_word = partial_word
+# 	if partial_word != "": 
+#  	partial_word = partial_word
 	
 # 	for i in range(len(word)):
 
@@ -49,20 +72,11 @@ show_correct_guess(word, guess_letter, partial_word)
 		
 # 			else:
 # 				partial_word = partial_word + "_"
-
-
 # 				# print partial_word
 
 # 	return partial_word
 
 # show_correct_guesses(word, guess_list)
-
-# def six_guesses(guesses):
-# 	""" function to count and limit user to 6 guesses """  
-# 	for guesses in range 6:
-
-# 	if guesses = 6:
-# 		break
 
 # RIGHT NOW THIS ONLY WORKS WITH SINGLE CHARACTERS
 # AND IS CASE SENSITIVE
