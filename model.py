@@ -1,12 +1,6 @@
 """Model for hangman challenge!"""
 
-# from flask_sqlalchemy import SQLAlchemy
-
-# import os
-
 import requests
-
-import json
 
 import random
 
@@ -16,14 +10,10 @@ r.status_code
 words = r.content.splitlines()
 word = random.choice(words)
 
-# THINGS TO KEEP TRACK OF:
-
-# right now these are all global but will be made into Class objects
-
-
 # the number of characters in the chosen word, may be multiples of the letters but still same number of chars
-# word_length = len(word)
+word_length = len(word)
 
+# shows the word with the correct guess letters at their proper indices
 partial_word = ""
 
 # user guess
@@ -35,10 +25,24 @@ guesses = 0
 # player starts with 6 guesses, we need to remove one guess for every legitimate guess (not including letters already guessed)
 max_guesses = 6
 
+# list to keep track of guesses
 guess_list = []
-# man = keep track of the body parts 
 
+# keep track of the body parts 
+# body_parts = ['head', 'body', 'left_arm', 'right_arm', 'left_leg', 'right_leg'] 
+# head = "o"
+# body = "()"
+# left_arm = ">-"
+# right_arm = "-<"
+# left_leg = "_|"
+# right_leg = "|_"
 
+#   o
+# >-()-<	
+#  _| |_
+
+# Class ATTRIBUTES vs Instance ATTRIBUTES
+# ATTRIBUTES are variables that are glued to an Instance
 
 #  # setting up classes so game is easily understood and altered
 # class Game(object):
@@ -50,20 +54,11 @@ guess_list = []
 
 
 # class Man(object):
-# 	"""6 hangman parts""" 
-# 	pass
-# 	# ATTRIBUTES
-
-# if guess_letter not in word:
-	# man loses appendage
-	
-# # # creates man based on incorrect guesses 
-# # # head
-# # # body
-# # # l_arm
-# # # r_arm
-# # # l_leg
-# # # r_leg
+# 	"""6 hangman parts, creates man based on incorrect guesses """ 
+# 	# if guess_letter not in word:
+# 	# man loses appendage so method could be
+# 	# pass
+# 	body_parts = [head, body, left_arm, right_arm, left_leg, right_leg]
 
 
 # class word(object):
@@ -90,5 +85,11 @@ guess_list = []
 # number of guesses remaining
 # number of correct guesses
 # number of incorrect guesses
+#  number of guesses to finished word
 
+
+# class Game(object):
+# 	"""game class"""
+# 	startGame
+# 	endGame
 
