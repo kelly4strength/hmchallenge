@@ -1,6 +1,8 @@
 # helpers
 
-import hmchallenge 
+# from hmchallenge import 
+
+from model import word, guess_letter, partial_word
 # import re
 
 # if guess == letter in word
@@ -23,20 +25,46 @@ import hmchallenge
 
 # 		else:
 # 			print "nope"
+# from model import word, guess_letter, guesses, max_guesses, guess_list
+# guess_letter = raw_input("Guess a letter or word: ")
+# word = "hello"
 
 
-def partial_word(word, guess_letter):
+
+def word_so_far(word, guess_letter, partial_word):
 	"""function to show current letters guessed throughout the game"""
-	# partial_word = "_ " * len(word)
-	for letter in range(len(word)):
-		
-		if guess_letter != letter in word:
-			print "_ " * len(word)
+	# to display the word with the correct guesses filled in i.e. "hello" = "_ _ l l _" when "l" is chosen
+	# need the character and index to do this
+	# partial_word = word length in _ +str + _ guessed letters // word - unguessed letters
+	if partial_word != "": 
+		partial_word = partial_word
+		print partial_word, "!"
+	
+	for i in range(len(word)):
+
+		if guess_letter != word[i]:
+			partial_word =  partial_word + "_ "
+
+		# elif partial_word alreat has letters, don't replace them with underscores
+
 
 		else:
-			print "_ " * len(word)
-						# + str + "_"
-						# guess_letter at that index and "_ " where it isn't
+			partial_word = partial_word + word[i]
+
+
+	return partial_word
+
+word_so_far(word, guess_letter, partial_word)
+
+		# if guess_letter != letter in word:
+		# 	print "_ " 
+
+		# else:
+		# 	print partial_word and replace "_ " with guess_letter
+
+			# possibly use .join
+			# + str + "_"
+			# guess_letter at that index and "_ " where it isn't
 			# or == guess letter at index
 			# print letter at that index with _ around it for unguessed letters
 

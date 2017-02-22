@@ -1,52 +1,23 @@
 
-# THINGS TO KEEP TRACK OF:
 
-# right now these are all global but will be made into Class objects
 
 # word - for now manually chosen, needs to be hooked up to http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
-
-import requests
-
-import json
-
-import random
-
-r = requests.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words')
-r.status_code
-words = r.content.splitlines()
-word = random.choice(words)
-
-
-# the number of characters in the chosen word, may be multiples of the letters but still same number of chars
-word_length = len(word)
-
-# to display the word with the correct guesses filled in i.e. "hello" = "_ _ l l _" when "l" is chosen
-# need the character and index to do this
-# partial_word = word length in _ +str + _ guessed letters // word - unguessed letters
-
-# user guess
-guess_letter = None
-
-# number of guesses (must be 6 or under) -will need to add correct and incorrect guesses
-guesses = 0
-
-# player starts with 6 guesses, we need to remove one guess for every legitimate guess (not including letters already guessed)
-max_guesses = 6
-
-guess_list = []
-# man = keep track of the body parts 
+from model import word, guesses, max_guesses, guess_list, partial_word
+from helpers import word_so_far
 
 def guess_word(word):
 	"""function determines a random word and asks user to input guesses"""
 
-# welcome user to game and define the number of letter in the word and number of guesses they get
-# only want to see this once, so outside the for loop
+# welcome user to game and give rules, number of letters in word and max number of guesses available
+# only want to see this once, so outside the loop
 
 print """
 	Welcome to my game of hangman!
 	You get %d guesses
 	You can guess a letter or the entire word
 	Your word has %d characters \n""" % (max_guesses, len(word))
+
+print word
 
 # using a while loop to limit number of guesses
 while guesses < max_guesses:
@@ -73,6 +44,7 @@ while guesses < max_guesses:
 			guesses += 1
 
 			print "Yes, %s is in the word\n" %(guess_letter)
+			print word_so_far(word, guess_letter, partial_word)
 
 	if guess_letter == word:
 		print "Well done! You've guessed the word %s" % (word) 
@@ -80,6 +52,7 @@ while guesses < max_guesses:
 
 	if 	guesses == max_guesses:
 		print "sorry, you've run out of guesses!"
+		print word_so_far(word, guess_letter, partial_word)
 		print word
 
 		

@@ -37,55 +37,7 @@
 # http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
 # - You can use whatever combination of programming languages, tools, frameworks and libraries
 
-# import word_list type thing below
-# http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
-# or word = random.random_word
 
-
-# import urllib2 import Request, urlopen, URLError
-# import random
-
-# words = urllib.urlopen('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words').read()
-# print type(words)
-# print words
-
-import requests
-
-import json
-
-import random
-
-r = requests.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words')
-r.status_code
-print type(r)
-words = r.content.splitlines()
-# print words
-word = random.choice(words)
-print word
-# print r.text
-# print r.json
-
-# contents = url.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words')
-
-
-# from urllib2 import Request, urlopen, URLError
-# import random
-
-# words = urllib2.Request('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words').random()
-# print type(words)
-# print words
-
-
-# random_word = random.words
-
-# print random_word
-# try:
-# 	response = urlopen(words)
-# 	kittens = response.read()
-# 	print kittens[559:1000]
-
-# except URLError, e:
-#     print 'No kittez. Got an error code:', e
 
 
 
