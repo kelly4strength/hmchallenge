@@ -17,4 +17,4 @@
 
 # if guess_letter == word:
 
-# if 	guesses == max_guesses
+# if wrong_guesses == max_guesses

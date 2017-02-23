@@ -11,6 +11,3 @@ def show_correct_guess_letter(word, user_guess, partial_word):
 		else:
 			partial_word = partial_word + word[i]
 	return partial_word
-
-# need to print letter combinations
-# need to show correct guesses so far

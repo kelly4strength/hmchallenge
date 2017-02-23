@@ -19,7 +19,6 @@ print word
 
 while wrong_guesses < max_wrong_guesses:
 
-
 	user_guess = raw_input("Guess a letter or word: \n").lower()
 
 	# In these cases, you get to guess again without adding a wrong guess
@@ -31,8 +30,9 @@ while wrong_guesses < max_wrong_guesses:
 		print "Oops! The word only has %d letters. Try again!" %(len(word))
 		continue
 
-	# if user hits "return" you get: Yes,  is in the word _ _ _ _ _  
-	 # prompt them for an appropiate response
+	if user_guess == "":
+		print "Oops! Looks like you forgot to enter a guess. Try again!"
+		continue
 
 	if user_guess in all_guesses:
 		print "Sorry, you already tried %s. Try again!\n " % (user_guess)
@@ -59,11 +59,6 @@ while wrong_guesses < max_wrong_guesses:
 			guesses += 1
 
 			print "Yes, %s is in the word %s \n" % (user_guess, show_correct_guess_letter(word, user_guess, partial_word))
-
-
-# WORKING ON THIS
-# - as the guesser makes correct guesses, occurences of the guessed letter in the word are 
-# shown while unknown letters are still hidden
 
 
 
