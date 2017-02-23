@@ -93,7 +93,7 @@ while wrong_guesses < max_wrong_guesses:
 			print "Yes, %s is in the word %s \n" % (user_guess, show_correct_guess_letter(word, user_guess, partial_word))
 
 
-# WORKING
+# WORKING ON THIS
 # - as the guesser makes correct guesses, occurences of the guessed letter in the word are 
 # shown while unknown letters are still hidden
 
