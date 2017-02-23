@@ -7,14 +7,14 @@
 # and all instances of the letter in the word
 # test the GET request URL
 
-while guesses < max_guesses:
+# while guesses < max_guesses:
 
-if guess_letter in guess_list:
+# if guess_letter in guess_list:
 
-if guess_letter not in word:
+# if guess_letter not in word:
 
-if guess_letter in word:
+# if guess_letter in word:
 
-if guess_letter == word:
+# if guess_letter == word:
 
-if 	guesses == max_guesses:
+# if 	guesses == max_guesses
