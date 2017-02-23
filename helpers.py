@@ -29,25 +29,27 @@ def entire_word_guessed(guess_letter):
 	"""lets user know when they have guesses the correct word"""
 	if guess_letter == word:
 		# break
-	print "Well done! You've guessed the word %s" % (word)
+		print "Well done! You've guessed the word %s" % (word)
 
-
-def limit_guess_characters(guess_letter):
-	if guess_letter != upper or lower case letter
-	if guess_letter > len(word)
-	if guess_letter = " "
-
-
-def ask_ user_to_play_again(guess_word):
-	play_again = raw_input("Would you like to play again? y or n? \n")
-	if play_again == "y":
-		start game game_over
-	if play_again == "n":
-		print "Thanks! Bye!"
-	if play_again != "y" or "no":
-		print "please respond with y or n"
-		
 # def game_over(entire_word_guessed):
+	
+
+# def limit_guess_characters(guess_letter):
+# 	if guess_letter != upper or lower case letter
+# 	if guess_letter > len(word)
+# 	if guess_letter = " "
+
+
+# def ask_ user_to_play_again(guess_word):
+# 	play_again = raw_input("Would you like to play again? y or n? \n")
+# 	if play_again == "y":
+# 		start game game_over
+# 	if play_again == "n":
+# 		print "Thanks! Bye!"
+# 	if play_again != "y" or "no":
+# 		print "please respond with y or n"
+
+
 
 # def show_correct_guesses(word, guess_list):
 # 	"""function to show current guess letter if it is in the word"""
@@ -101,7 +103,3 @@ def ask_ user_to_play_again(guess_word):
 
 # if guess == guess in guess_list
 # tell user that has already been guessed and guess again (back to input)
-
-
-
-
