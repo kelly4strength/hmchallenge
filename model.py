@@ -1,7 +1,6 @@
 """Model for hangman challenge!"""
-
+import re
 import requests
-
 import random
 
 # is there any way to limit these be length of random choice or starts with letter
@@ -17,13 +16,16 @@ word_length = len(word)
 partial_word = ""
 
 # user guess
-guess_letter = None
+user_guess = None
 
 # number of guesses (must be 6 or under) -will need to add correct and incorrect guesses
 guesses = 0
 
 # player starts with 6 guesses, we need to remove one guess for every legitimate guess (not including letters already guessed)
-max_guesses = 6
+max_wrong_guesses = 6
+
+# wrong guess counts againsthe max wrong guesses
+wrong_guesses = 0
 
 # list to keep track of guesses
 guess_list = []

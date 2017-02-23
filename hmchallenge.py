@@ -1,60 +1,57 @@
 """hangman challenge!!"""
 
-from model import word, guesses, max_guesses, guess_list, partial_word, guess_letter
+import re
 
-from helpers import show_correct_guess_letter, limit_guesses, entire_word_guessed
+from model import word, guesses, max_wrong_guesses, guess_list, partial_word, user_guess, wrong_guesses
+
+from helpers import show_correct_guess_letter, game_over
 
 def guess_word(word):
 	"""function determines a random word and asks user to guess letters in the word"""
 
-# welcome user to game and give rules, number of letters in word and max number of guesses available
 print """
-	Welcome to something man!
+	Welcome to hangman!
 	I've chosen a super secret word for you, it has %d characters
 	You can guess a letter or the entire word.
-	You get %d guesses to put your man together \n""" % (len(word), max_guesses)
+	You get %d guesses to put your man together \n""" % (len(word), max_wrong_guesses)
 
 print word
 
-# using a while loop to limit number of guesses
-# while guesses < max_guesses and guess_letter != word:
-while guesses < max_guesses:
+while wrong_guesses < max_wrong_guesses:
 
-	# prompting the user that keyboard input is expected/requested
-	guess_letter = raw_input("Guess a letter or word: \n")
+	user_guess = raw_input("Guess a letter or word: \n").lower()
 
-	# break this out
-	if guess_letter in guess_list:
-		# You get to guess again and that guess doesn't count against you
-		print "Sorry, you already tried %s. Try again!\n " % (guess_letter)
+	# In these cases, you get to guess again without adding a wrong guess
+	if not re.match("^[a-z]*$", user_guess):
+		print "Oops! Only letters a-z allowed! Try again!"
+		continue
+
+	elif len(user_guess) > len(word):
+		print "Oops! The word only has %d letters. Try again!" %(len(word))
+		continue
+
+	if user_guess in guess_list:
+		print "Sorry, you already tried %s. Try again!\n " % (user_guess)
 
 	else:
-		# appends guess to guess_list so you can track # of guesses
-		guess_list.append(guess_letter)
+		guess_list.append(user_guess)
 		
-		# if it's the last guess need to let them know the game is over
-		if guess_letter not in word:
+		if user_guess not in word:
+			wrong_guesses += 1
+			print "Sorry, %s is not in the word!\n" %(user_guess)
+
+		if user_guess == word:
+			print "Well done! You've guessed the word %s" % (word)
+			break
+
+		if user_guess in word:
 			guesses += 1
-			print "Sorry, %s is not in the word!\n" %(guess_letter)
+			print "Yes, %s is in the word %s \n" % (user_guess, show_correct_guess_letter(word, user_guess, partial_word))
 
-		if guess_letter in word:
-			guesses += 1
-			print "Yes, %s is in the word %s \n" % (guess_letter, show_correct_guess_letter(word, guess_letter, partial_word))
-
-	# if user guesses entire word, break out of loop
-	# have to add break to function because it's within the while loop so it will keep going until condition is false
-	entire_word_guessed(guess_letter)
-
-	
-	limit_guesses(guesses)
-
+	game_over(wrong_guesses)
 
 
 	
-	# CURRENT BUG, IF YOU GUESS ALL THE LETTERS INDIVIDUALLY, YOU DON'T WIN!
-	# IF LETTERS IN GUESS LIST = WORD THEN WIN!!!
-
-		
 
 
 

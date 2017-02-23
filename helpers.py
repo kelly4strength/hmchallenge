@@ -1,14 +1,14 @@
 """helper functions"""
 
-from model import word, guess_letter, partial_word, max_guesses
+from model import word, user_guess, partial_word, max_wrong_guesses
 
-def show_correct_guess_letter(word, guess_letter, partial_word):
+def show_correct_guess_letter(word, user_guess, partial_word):
 	"""function to show current guess letter if it is in the word"""
 
 ########### works for letter combinations but doesn't print them
 	for i in range(len(word)):
 
-		if guess_letter != word[i]:
+		if user_guess != word[i]:
 			partial_word =  partial_word + "_ "
 
 		else:
@@ -17,27 +17,32 @@ def show_correct_guess_letter(word, guess_letter, partial_word):
 	return partial_word
 
 
-def limit_guesses(guesses):
+def game_over(wrong_guesses):
 	"""function to limit user to max number of guesses"""  
 	
-	if 	guesses == max_guesses:
+	if 	wrong_guesses == max_wrong_guesses:
 		print """You've run out of guesses! 
 		The word was %s.""" % (word)
 
+# BUG - these should not both hit!!!
 
-def entire_word_guessed(guess_letter):
-	"""lets user know when they have guesses the correct word"""
-	if guess_letter == word:
-		# break
-		print "Well done! You've guessed the word %s" % (word)
+# Well done! You've guessed the word mikvahs
+
+# You've run out of guesses! 
+# 		The word was mikvahs.
+
 
 # def game_over(entire_word_guessed):
-	
+		
+# CURRENT BUG, IF YOU GUESS ALL THE LETTERS INDIVIDUALLY, YOU DON'T WIN!
+# IF LETTERS IN GUESS LIST = WORD THEN WIN!!!
 
-# def limit_guess_characters(guess_letter):
-# 	if guess_letter != upper or lower case letter
-# 	if guess_letter > len(word)
-# 	if guess_letter = " "
+
+
+# def limit_guess_characters(user_guess):
+# 	if user_guess != upper or lower case letter
+# 	if user_guess > len(word)
+# 	if user_guess = " "
 
 
 # def ask_ user_to_play_again(guess_word):
