@@ -2,9 +2,9 @@
 
 import re
 
-from helpers import show_correct_guess_letter
+from helpers import generate_partial_word
 
-from classes import word, user_guess, partial_word, max_wrong_guesses, all_guesses, correct_guess_list, wrong_guesses, wrong_guess_list, guesses
+from model import word, user_guess, partial_word, max_wrong_guesses, all_guesses, correct_guess_list, wrong_guesses, wrong_guess_list, guesses
 
 def guess_word(word):
 	"""function determines a random word and asks user to guess letters in the word"""
@@ -19,7 +19,11 @@ print word
 
 while wrong_guesses < max_wrong_guesses:
 
-	user_guess = raw_input("Guess a letter or word: \n").lower()
+	user_guess = raw_input("Guess a letter or word: ").lower()
+
+	CURSOR_UP_ONE = '\x1b[1A'
+	ERASE_LINE = '\x1b[2K'
+	print(CURSOR_UP_ONE + ERASE_LINE)
 
 	# In these cases, you get to guess again without adding a wrong guess
 	if not re.match("^[a-z]*$", user_guess):
@@ -57,9 +61,13 @@ while wrong_guesses < max_wrong_guesses:
 		if user_guess in word:
 			correct_guess_list.append(user_guess)
 			guesses += 1
+			print "Yes, %s is in the word %s" % (user_guess, generate_partial_word(word, correct_guess_list)), 
 
-			print "Yes, %s is in the word %s \n" % (user_guess, show_correct_guess_letter(word, user_guess, partial_word))
+			temp_partial_word = generate_partial_word(word, correct_guess_list)
 
+			if "_" not in temp_partial_word:
+				print "Well done! You've guessed all the letters in the secret word. %s" % (word)
+				break
 
 
 	
